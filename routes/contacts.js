@@ -23,7 +23,7 @@ router.get('/', auth, async (req, res) => {
 // route : POST api/contacts
 // desc : Add new contact
 // access : Private
-router.get(
+router.post(
   '/',
   [
     auth,
