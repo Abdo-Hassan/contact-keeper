@@ -29,7 +29,7 @@ const ContactState = props => {
         name: 'ali ahmed',
         email: 'ali@ali.com',
         phone: '222-222-222',
-        type: 'personal'
+        type: 'professional'
       },
       {
         id: 3,
