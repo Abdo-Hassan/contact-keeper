@@ -75,6 +75,7 @@ const ContactForm = () => {
         value='personal'
         checked={type === 'personal'}
         onChange={onChange}
+        style={{ marginRight: 4 }}
       />
       <span style={{ marginRight: 10 }}>Personal</span>
       <input
@@ -83,6 +84,7 @@ const ContactForm = () => {
         value='personal'
         checked={type === 'personal'}
         onChange={onChange}
+        style={{ marginRight: 4 }}
       />
       Professional
       <div>
