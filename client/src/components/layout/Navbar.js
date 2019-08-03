@@ -6,8 +6,10 @@ const Navbar = ({ title, icon }) => {
   return (
     <div className='navbar bg-primary'>
       <h2>
-        <i className={icon} style={{ marginRight: 10 }} />
-        {title}
+        <Link to='/'>
+          <i className={icon} style={{ marginRight: 10 }} />
+          {title}
+        </Link>
       </h2>
       <ul>
         <li>
@@ -15,6 +17,12 @@ const Navbar = ({ title, icon }) => {
         </li>
         <li>
           <Link to='/about'>About</Link>
+        </li>
+        <li>
+          <Link to='/register'>Register</Link>
+        </li>
+        <li>
+          <Link to='/login'>Login</Link>
         </li>
       </ul>
     </div>
