@@ -2,7 +2,7 @@ import React, { useContext, Fragment } from 'react';
 import ContactContext from '../../context/contact/contactContext';
 import ContactItem from './ContactItem';
 
-const Contact = () => {
+const Contacts = () => {
   const contactContext = useContext(ContactContext);
   const { contacts } = contactContext;
   return (
@@ -14,4 +14,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Contacts;
