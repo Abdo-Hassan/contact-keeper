@@ -9,7 +9,7 @@ const Navbar = ({ title, icon }) => {
   const contactContext = useContext(ContactContext);
 
   const { isAuthenticated, logout, user } = authContext;
-  const { clearContacts } = useContext(ContactContext);
+  const { clearContacts } = contactContext;
 
   const onLogout = () => {
     logout();
@@ -18,17 +18,17 @@ const Navbar = ({ title, icon }) => {
 
   const authLinks = (
     <Fragment>
-      <li>Hello {user && user.name} </li>
+      <li>Hello {user && user.name}</li>
       <li>
         <a onClick={onLogout} href='#!'>
-          <i className='fas fa-sign-out-alt' />
+          <i className='fas fa-sign-out-alt' />{' '}
           <span className='hide-sm'>Logout</span>
         </a>
       </li>
     </Fragment>
   );
 
-  const gestLinks = (
+  const guestLinks = (
     <Fragment>
       <li>
         <Link to='/register'>Register</Link>
@@ -38,15 +38,13 @@ const Navbar = ({ title, icon }) => {
       </li>
     </Fragment>
   );
+
   return (
     <div className='navbar bg-primary'>
       <h2>
-        <Link to='/'>
-          <i className={icon} style={{ marginRight: 10 }} />
-          {title}
-        </Link>
+        <i className={icon} /> {title}
       </h2>
-      <ul>{isAuthenticated ? authLinks : gestLinks}</ul>
+      <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
     </div>
   );
 };

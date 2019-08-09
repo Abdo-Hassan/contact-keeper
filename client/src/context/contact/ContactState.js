@@ -1,6 +1,5 @@
 import React, { useReducer } from 'react';
 import axios from 'axios';
-import uuid from 'uuid';
 import contactContext from './contactContext';
 import contactReducer from './contactReducer';
 import {
@@ -12,10 +11,8 @@ import {
   FILTER_CONTACTS,
   CLEAR_FILTER,
   CONTACT_ERROR,
-  SET_ALERT,
-  REMOVE_ALERT,
-  GET_CONTACTS,
-  CLEAR_CONTACTS
+  CLEAR_CONTACTS,
+  GET_CONTACTS
 } from '../types';
 
 const ContactState = props => {
@@ -54,8 +51,13 @@ const ContactState = props => {
   };
 
   // delete contact
-  const deleteContact = id => {
-    dispatch({ type: DELETE_CONTACT, payload: id });
+  const deleteContact = async id => {
+    try {
+      await axios.delete(`/api/contacts/${id}`);
+      dispatch({ type: DELETE_CONTACT, payload: id });
+    } catch (err) {
+      dispatch({ type: CONTACT_ERROR, payload: err.response.msg });
+    }
   };
 
   // clear contacts
