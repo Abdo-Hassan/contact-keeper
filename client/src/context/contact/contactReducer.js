@@ -1,4 +1,5 @@
 import {
+  GET_CONTACTS,
   ADD_CONTACT,
   DELETE_CONTACT,
   SET_CURRENT,
@@ -7,7 +8,6 @@ import {
   FILTER_CONTACTS,
   CLEAR_FILTER,
   CONTACT_ERROR,
-  GET_CONTACTS,
   CLEAR_CONTACTS
 } from '../types';
 
@@ -29,7 +29,7 @@ export default (state, action) => {
       return {
         ...state,
         contacts: state.contacts.map(contact =>
-          contact.id === action.payload.id ? action.payload : contact
+          contact._id === action.payload._id ? action.payload : contact
         ),
         loading: false
       };
@@ -70,7 +70,7 @@ export default (state, action) => {
     case CLEAR_FILTER:
       return {
         ...state,
-        current: null
+        filtered: null
       };
     case CONTACT_ERROR:
       return {

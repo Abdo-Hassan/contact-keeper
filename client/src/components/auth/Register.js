@@ -5,6 +5,7 @@ import AuthContext from '../../context/auth/authContext';
 const Register = props => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
+
   const { setAlert } = alertContext;
   const { register, error, clearErrors, isAuthenticated } = authContext;
 
@@ -12,6 +13,7 @@ const Register = props => {
     if (isAuthenticated) {
       props.history.push('/');
     }
+
     if (error === 'User already exists') {
       setAlert(error, 'danger');
       clearErrors();
@@ -78,8 +80,8 @@ const Register = props => {
             name='password'
             value={password}
             onChange={onChange}
-            minLength='6'
             required
+            minLength='6'
           />
         </div>
         <div className='form-group'>
@@ -88,15 +90,15 @@ const Register = props => {
             type='password'
             name='password2'
             value={password2}
-            minLength='6'
             onChange={onChange}
             required
+            minLength='6'
           />
         </div>
         <input
           type='submit'
           value='Register'
-          className='btn btn-block btn-primary'
+          className='btn btn-primary btn-block'
         />
       </form>
     </div>

@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
-import AlertContext from '../../context/alert/alertContext';
 import AuthContext from '../../context/auth/authContext';
+import AlertContext from '../../context/alert/alertContext';
 
 const Login = props => {
   const alertContext = useContext(AlertContext);
@@ -13,6 +13,7 @@ const Login = props => {
     if (isAuthenticated) {
       props.history.push('/');
     }
+
     if (error === 'Invalid Credentials') {
       setAlert(error, 'danger');
       clearErrors();
@@ -32,7 +33,7 @@ const Login = props => {
   const onSubmit = e => {
     e.preventDefault();
     if (email === '' || password === '') {
-      setAlert('Please fill all fields', 'danger');
+      setAlert('Please fill in all fields', 'danger');
     } else {
       login({
         email,
@@ -70,7 +71,7 @@ const Login = props => {
         <input
           type='submit'
           value='Login'
-          className='btn btn-block btn-primary'
+          className='btn btn-primary btn-block'
         />
       </form>
     </div>

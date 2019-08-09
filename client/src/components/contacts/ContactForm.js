@@ -1,18 +1,24 @@
 import React, { useState, useContext, useEffect } from 'react';
 import ContactContext from '../../context/contact/contactContext';
+
 const ContactForm = () => {
   const contactContext = useContext(ContactContext);
-  const { addContact, current, clearCurrent, updateContact } = contactContext;
+
+  const { addContact, updateContact, clearCurrent, current } = contactContext;
 
   useEffect(() => {
     if (current !== null) {
       setContact(current);
     } else {
-      setContact({ name: '', email: '', phone: '', type: 'personal' });
+      setContact({
+        name: '',
+        email: '',
+        phone: '',
+        type: 'personal'
+      });
     }
   }, [contactContext, current]);
 
-  // the state
   const [contact, setContact] = useState({
     name: '',
     email: '',
@@ -20,18 +26,11 @@ const ContactForm = () => {
     type: 'personal'
   });
 
-  // clearAll
-  const clearAll = () => {
-    clearCurrent();
-  };
-
   const { name, email, phone, type } = contact;
 
-  // onChange method
   const onChange = e =>
     setContact({ ...contact, [e.target.name]: e.target.value });
 
-  // onSubmit method
   const onSubmit = e => {
     e.preventDefault();
     if (current === null) {
@@ -40,6 +39,10 @@ const ContactForm = () => {
       updateContact(contact);
     }
     clearAll();
+  };
+
+  const clearAll = () => {
+    clearCurrent();
   };
 
   return (
@@ -75,17 +78,15 @@ const ContactForm = () => {
         value='personal'
         checked={type === 'personal'}
         onChange={onChange}
-        style={{ marginRight: 4 }}
-      />
-      <span style={{ marginRight: 10 }}>Personal</span>
+      />{' '}
+      Personal{' '}
       <input
         type='radio'
         name='type'
-        value='personal'
-        checked={type === 'personal'}
+        value='professional'
+        checked={type === 'professional'}
         onChange={onChange}
-        style={{ marginRight: 4 }}
-      />
+      />{' '}
       Professional
       <div>
         <input
