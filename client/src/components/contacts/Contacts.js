@@ -6,9 +6,9 @@ import Spinner from '../layout/Spinner';
 
 const Contacts = () => {
   const contactContext = useContext(ContactContext);
-  const { contacts, filtered, getContact, loading } = contactContext;
+  const { contacts, filtered, getContacts, loading } = contactContext;
   useEffect(() => {
-    getContact();
+    getContacts();
     // eslint-disable-next-line
   }, []);
   if (contacts !== null && contacts.length === 0) {

@@ -26,7 +26,7 @@ const ContactState = props => {
   const [state, dispatch] = useReducer(contactReducer, initialState);
 
   // Get Contacts
-  const getContact = async () => {
+  const getContacts = async () => {
     try {
       const res = await axios.get('/api/contacts');
 
@@ -148,7 +148,7 @@ const ContactState = props => {
         updateContact,
         filterContacts,
         clearFilter,
-        getContact,
+        getContacts,
         clearContacts
       }}
     >
